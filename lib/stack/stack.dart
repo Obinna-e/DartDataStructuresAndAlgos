@@ -1,5 +1,6 @@
 class Stack<E> {
   Stack() : _storage = <E>[];
+  Stack.of(Iterable<E> elements) : _storage = List<E>.of(elements);
   final List<E> _storage;
 
   void push(E element) => _storage.add(element);
@@ -14,4 +15,21 @@ class Stack<E> {
         '${_storage.reversed.join('\n')}'
         '\n-----------';
   }
+}
+
+void movedFromMain() {
+  final stack = Stack();
+  stack.push(1);
+  stack.push(2);
+  stack.push(3);
+  stack.push(4);
+  print(stack);
+
+  final element = stack.pop();
+  print('Popped:$element');
+
+  const list = ['S', 'M', 'O', 'K', 'E'];
+  final smokeStack = Stack.of(list);
+  print(smokeStack);
+  smokeStack.pop();
 }
